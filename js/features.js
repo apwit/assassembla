@@ -5,7 +5,7 @@ $(function() {
 
   // Removes the sidebar in the Tickets index
   $('#tickets-right-col-wrap > tbody > tr > td:not(:last)').remove();
-
+	
   // Turns square brackets in ticket titles into a "Component" column
   // on the tickets index
   componentsColumn();
@@ -41,7 +41,7 @@ function componentsColumn () {
 function spacesMenu() {
 	
 	// Lets build the dropdown
-	$('#main-menu').append($('<li><a href="" id="ass-spaces-menu-link">Spaces</a></li>'));
+	$('#main-menu').append($('<li><a href="/spaces/my_spaces" id="ass-spaces-menu-link">Spaces</a></li>'));
 	$('body').prepend($('<div id="ass-spaces-menu"></div>'));
 	
 	
@@ -51,8 +51,8 @@ function spacesMenu() {
 	// Set CSS for menu
 	$menu.css({
 		'position': 'absolute',
-		'top': $('.menu-submenu:first').offset().top,
-		'z-index': 99999,
+		'top': $('#header-w').height() + $('#main-menu-w').height(),
+		'z-index': 1000,
 		'background-color': '#E0ED9C',
 		'padding': 6,
 		'line-height': '1.8em'
@@ -62,10 +62,13 @@ function spacesMenu() {
 		// Over
 		$menu.css('left', $menuLink.offset().left).show();
 		$menuLink.css('background-color', '#E0ED9C');
+		clearTimeout(hideTimer);
 	}, function() {
 		// Out
-		$menu.hide();
-		$menuLink.removeAttr('style');
+		hideTimer = setTimeout(function() {
+			$menu.hide();
+			$menuLink.removeAttr('style');
+		}, 400);
 	});
 	
 	
@@ -89,17 +92,3 @@ function spacesMenu() {
 	
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
