@@ -101,7 +101,7 @@ function componentsColumn () {
 function spacesMenu() {
 	
 	// Lets build the dropdown
-	$('#main-menu').append($('<li><a href="" id="ass-spaces-menu-link">Spaces</a></li>'));
+	$('#main-menu').append($('<li><a href="/spaces/my_spaces" id="ass-spaces-menu-link">Spaces</a></li>'));
 	$('body').prepend($('<div id="ass-spaces-menu"></div>'));
 	
 	
@@ -111,7 +111,7 @@ function spacesMenu() {
 	// Set CSS for menu
 	$menu.css({
 		'position': 'absolute',
-		'top': $('.menu-submenu:first').offset().top,
+		'top': $('#header-w').height() + $('#main-menu-w').height(),
 		'z-index': 99999,
 		'background-color': '#E0ED9C',
 		'padding': 6,
