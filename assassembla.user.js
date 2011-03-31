@@ -60,8 +60,6 @@
 
 $(function() {
 	
-	buildSettingsPanel();
-	
   // Adds the "My Followed Tickets" link to the page header	
 	$('#user-box').find('span:first').before('<span>|</span><a href="/followed_tickets"><strong>My Followed Tickets</strong></a>');
 
