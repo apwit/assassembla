@@ -18,14 +18,14 @@ var Features = new function Features () {
   this.register = function (feature) {
 
     // Set any defaults
-    feature = $.extend(template, feature);
+    feature = $.extend({}, template, feature);
 
     // Validate feature
     if (!feature.key || !feature.title || !feature.description)
       throw "Invalid feature. Please supply a key, title and description";
 
     // Save this feature
-    features.push(feature);
+    features[feature.key] = feature;
 
   };
 
@@ -34,7 +34,8 @@ var Features = new function Features () {
   this.onready = function () {
 
     // Loop through all registered features
-    $.each(features, function (i, feature) {
+    $.each(features, function (key, feature) {
+      console.log(feature);
 
       // Call the on ready callback if one is defined
       if (feature.onready) feature.onready();
