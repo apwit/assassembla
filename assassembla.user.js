@@ -59,14 +59,81 @@
 
 
 $(function() {
-
+	
   // Adds the "My Followed Tickets" link to the page header	
 	$("#user-box").find('span:first').before('<span>|</span><a href="/followed_tickets"><strong>My Followed Tickets</strong></a>');
-
+	
   // Removes the sidebar in the Tickets index
   $("#tickets-right-col-wrap > tbody > tr > td:not(:last)").remove();
-
+	
+	// Adds a dropdown menu to the header for jumping straight to a Space
+	spacesMenu();
+		
 });
+
+
+
+
+
+
+
+
+
+function spacesMenu() {
+	
+	// Lets build the dropdown
+	$('#main-menu').css('overflow', 'auto').append($('<li><a href="" id="ass-spaces-menu-link">Spaces</a></li>'));
+	$('body').prepend($('<div id="ass-spaces-menu"></div>'));
+	
+	
+	$menuLink = $('#ass-spaces-menu-link');
+	$menu = $('#ass-spaces-menu');
+	
+	// Set CSS for menu
+	$menu.css({
+		'position': 'absolute',
+		'top': $menuLink.offset().top + $menuLink.outerHeight(true),
+		'left': $menuLink.offset().left,
+		'z-index': 99999,
+		'background-color': '#E0ED9C',
+		'padding': 6,
+		'line-height': '1.8em'
+	}).hide();
+	
+	$menuLink.add($menu).hover(function() {
+		// Over
+		$menu.show();
+		$menuLink.css('background-color', '#E0ED9C');
+	}, function() {
+		// Out
+		$menu.hide();
+		$menuLink.removeAttr('style');
+	});
+	
+	
+	
+	// Get XML list of Spaces
+	$.ajax({
+		url: "https://www.assembla.com/spaces/my_spaces",
+		dataType: 'xml',
+		success: function(data) {
+			// We now have the list of Spaces in XML format
+			// Lets loop through and find each Space
+			$(data).find("space").each(function() {
+				// Log the name of this space
+				var spaceName = $(this).find('name').text();
+				var spaceUrl = "/spaces/" + $(this).find('wiki-name').text();
+				$menu.prepend($('<a href="' + spaceUrl + '">' + spaceName + '</a><br/>'));
+			});
+		}
+	});
+	
+	
+}
+
+
+
+
 
 
 
