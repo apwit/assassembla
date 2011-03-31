@@ -8,7 +8,7 @@
 // @include        https://www.assembla.*
 // @copyright      Nick Giancola
 // @website        http://www.apwit.com
-// @version        0.0.2
+// @version        0.0.3
 // ==/UserScript==
 
 
