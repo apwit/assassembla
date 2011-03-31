@@ -4,7 +4,7 @@ An enhancement userscript for Assembla.com
 
 ## Installation
 
-Simply [click here](https://github.com/downloads/apwit/assassembla/assassembla-0.0.3.user.js "AssAssembla v0.0.3") and comply when your browser asks you if you would like to install.
+Simply [click here](https://github.com/downloads/apwit/assassembla/assassembla-0.1.1.user.js "AssAssembla v0.1.1") and comply when your browser asks you if you would like to install.
 
 ## Features (in order of appearance)
 
