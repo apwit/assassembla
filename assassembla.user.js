@@ -103,10 +103,13 @@ function spacesMenu() {
 		// Over
 		$menu.css('left', $menuLink.offset().left).show();
 		$menuLink.css('background-color', '#E0ED9C');
+		clearTimeout(hideTimer);
 	}, function() {
 		// Out
-		$menu.hide();
-		$menuLink.removeAttr('style');
+		hideTimer = setTimeout(function() {
+			$menu.hide();
+			$menuLink.removeAttr('style');
+		}, 400);
 	});
 	
 	
