@@ -92,8 +92,7 @@ function spacesMenu() {
 	// Set CSS for menu
 	$menu.css({
 		'position': 'absolute',
-		'top': $menuLink.offset().top + $menuLink.outerHeight(true),
-		'left': $menuLink.offset().left,
+		'top': $('.menu-submenu:first').offset().top,
 		'z-index': 99999,
 		'background-color': '#E0ED9C',
 		'padding': 6,
@@ -102,7 +101,7 @@ function spacesMenu() {
 	
 	$menuLink.add($menu).hover(function() {
 		// Over
-		$menu.show();
+		$menu.css('left', $menuLink.offset().left).show();
 		$menuLink.css('background-color', '#E0ED9C');
 	}, function() {
 		// Out
@@ -118,6 +117,7 @@ function spacesMenu() {
 		dataType: 'xml',
 		success: function(data) {
 			// We now have the list of Spaces in XML format
+			$menu.empty(); // Clear "Loading list..." text
 			// Lets loop through and find each Space
 			$(data).find("space").each(function() {
 				// Log the name of this space
