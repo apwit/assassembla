@@ -82,7 +82,7 @@ $(function() {
 function spacesMenu() {
 	
 	// Lets build the dropdown
-	$('#main-menu').css('overflow', 'auto').append($('<li><a href="" id="ass-spaces-menu-link">Spaces</a></li>'));
+	$('#main-menu').append($('<li><a href="" id="ass-spaces-menu-link">Spaces</a></li>'));
 	$('body').prepend($('<div id="ass-spaces-menu"></div>'));
 	
 	
