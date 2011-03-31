@@ -1,0 +1,13 @@
+{
+  "name": "AssAssembla",
+  "version": "0.1.2",
+  "description": "Add some simple but nifty features to Assembla",
+  "homepage_url": "http://github.com/apwit/assassembla",
+  "content_scripts": [
+    {
+      "matches": ["*://*.assembla.com/*"],
+      "js": ["js/jquery-1.5.2.min.js", "js/features_support.js", "js/features.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
