@@ -8,7 +8,7 @@
 // @include        https://www.assembla.*
 // @copyright      Kopimi
 // @website        http://www.apwit.com
-// @version        0.1.1
+// @version        0.1.2
 // ==/UserScript==
 
 
@@ -60,12 +60,14 @@
 
 $(function() {
 	
+	buildSettingsPanel();
+	
   // Adds the "My Followed Tickets" link to the page header	
 	$('#user-box').find('span:first').before('<span>|</span><a href="/followed_tickets"><strong>My Followed Tickets</strong></a>');
 
   // Removes the sidebar in the Tickets index
   $('#tickets-right-col-wrap > tbody > tr > td:not(:last)').remove();
-
+	
   // Turns square brackets in ticket titles into a "Component" column
   // on the tickets index
   componentsColumn();
@@ -74,6 +76,12 @@ $(function() {
 	spacesMenu();
 
 });
+
+
+
+
+
+
 
 function componentsColumn () {
   	
@@ -98,6 +106,11 @@ function componentsColumn () {
 
 }
 
+
+
+
+
+
 function spacesMenu() {
 	
 	// Lets build the dropdown
@@ -112,7 +125,7 @@ function spacesMenu() {
 	$menu.css({
 		'position': 'absolute',
 		'top': $('#header-w').height() + $('#main-menu-w').height(),
-		'z-index': 99999,
+		'z-index': 1000,
 		'background-color': '#E0ED9C',
 		'padding': 6,
 		'line-height': '1.8em'
