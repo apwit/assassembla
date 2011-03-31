@@ -8,7 +8,7 @@
 // @include        https://www.assembla.*
 // @copyright      Nick Giancola
 // @website        http://www.apwit.com
-// @version        0.0.1
+// @version        0.0.2
 // ==/UserScript==
 
 
@@ -59,9 +59,13 @@
 
 
 $(function() {
-	
+
+  // Adds the "My Followed Tickets" link to the page header	
 	$("#user-box").find('span:first').before('<span>|</span><a href="/followed_tickets"><strong>My Followed Tickets</strong></a>');
-	
+
+  // Removes the sidebar in the Tickets index
+  $("#tickets-right-col-wrap > tbody > tr > td:not(:last)").remove();
+
 });
 
 
