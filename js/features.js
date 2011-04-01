@@ -1,4 +1,4 @@
-Features.register({
+FeatureFactory.register({
   key: 'my_followed_tickets', 
   title: 'My Followed Tickets Link',
   description: 'Add a "My Followed Tickets" link to the page header',
@@ -10,7 +10,7 @@ Features.register({
 });
 
 
-Features.register({
+FeatureFactory.register({
   key: 'no_ticket_side_bar',
   title: 'No Side Bar On Tickets Page',
   description: 'Remove the sidebar in the Tickets index',
@@ -22,7 +22,7 @@ Features.register({
 });
 
 
-Features.register({
+FeatureFactory.register({
   key: 'components_column',
   title: 'Components Column',
   description: 'Add a "Components" column to the tickets index',
@@ -50,7 +50,7 @@ Features.register({
 });
 
 
-Features.register({
+FeatureFactory.register({
   key: 'spaces_menu',
   title: 'Spaces Menu',
   description: 'Add a dropdown menu to the header for jumping straight to a Space',

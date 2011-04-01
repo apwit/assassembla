@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.assembla.com/*"],
-      "js": ["js/jquery-1.5.2.min.js", "js/features_support.js", "js/features.js"],
+      "js": ["js/jquery-1.5.2.min.js", "js/feature_factory.js", "js/features.js"],
       "run_at": "document_start"
     }
   ]

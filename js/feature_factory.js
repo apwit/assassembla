@@ -1,4 +1,4 @@
-var Features = new function Features () {
+var FeatureFactory = new function FeatureFactory () {
 
   // A key of all the currently registered features
   var features = {};
@@ -84,7 +84,7 @@ var Features = new function Features () {
 };
 
 // Bind jQuery's onready
-$(Features.onready);
+$(FeatureFactory.onready);
 
 // Bind jQuery's onload
-$(window).load(Features.onload);
+$(window).load(FeatureFactory.onload);
