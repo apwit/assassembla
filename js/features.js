@@ -27,6 +27,12 @@ FeatureFactory.register({
   title: 'Components Column',
   description: 'Add a "Components" column to the tickets index',
   onready: function () {
+
+    // Only run on the ticket index for a space
+    var $navItem = $('.menu-submenu > li:first > a');
+    if ($navItem.is(':not(.selected)') && $navItem.text() == 'Ticket List') return false;
+
+    alert('test');
       
     // Adds a dropdown menu to the header for jumping straight to a Space
     $('#ticket_list > table > thead > tr > th:first-child').after('<th class="component_column">Component</th>');
