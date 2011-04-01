@@ -1,4 +1,4 @@
-var Features = new function Features () {
+var FeatureFactory = new function FeatureFactory () {
 
   // A key of all the currently registered features
   var features = {};
@@ -10,7 +10,8 @@ var Features = new function Features () {
     description: null,
     onready: null,
     onload: null,
-    defaultState: 'enabled'
+    defaultState: 'enabled',
+    state: 'enabled'
   };
 
 
@@ -24,6 +25,17 @@ var Features = new function Features () {
     if (!feature.key || !feature.title || !feature.description)
       throw "Invalid feature. Please supply a key, title and description";
 
+    // Find out whether or not this feature is enabled
+    var stateKey = 'feature:' + feature.key + ':state';
+    if (!localStorage[stateKey])
+      localStorage[stateKey] = feature.state = feature.defaultState;
+    else
+      feature.state = localStorage[stateKey];
+
+    // Set some easy access points for the state
+    feature.enabled = feature.state == 'enabled' ? true : false;
+    feature.disabled = !feature.enabled;
+
     // Save this feature
     features[feature.key] = feature;
 
@@ -35,10 +47,9 @@ var Features = new function Features () {
 
     // Loop through all registered features
     $.each(features, function (key, feature) {
-      console.log(feature);
 
       // Call the on ready callback if one is defined
-      if (feature.onready) feature.onready();
+      if (feature.enabled && feature.onready) feature.onready();
 
     });
 
@@ -52,7 +63,19 @@ var Features = new function Features () {
     $.each(features, function (i, feature) {
 
       // Call the onload callback if one is defined
-      if (feature.onload) feature.onload();
+      if (feature.enabled && feature.onload) feature.onload();
+
+    });
+
+  };
+
+
+  // Iterates over all features and executes the given function
+  this.each = function (callback) {
+
+    $.each(features, function (key, feature) {
+
+      callback(feature);
 
     });
 
@@ -61,7 +84,7 @@ var Features = new function Features () {
 };
 
 // Bind jQuery's onready
-$(Features.onready);
+$(FeatureFactory.onready);
 
 // Bind jQuery's onload
-$(window).load(Features.onload);
+$(window).load(FeatureFactory.onload);
