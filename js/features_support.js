@@ -69,6 +69,18 @@ var Features = new function Features () {
 
   };
 
+
+  // Iterates over all features and executes the given function
+  this.each = function (callback) {
+
+    $.each(features, function (key, feature) {
+
+      callback(feature);
+
+    });
+
+  };
+
 };
 
 // Bind jQuery's onready
