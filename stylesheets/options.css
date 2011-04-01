@@ -1,3 +1,22 @@
 body {
-	background-color: red;
+	margin: 0;
+	padding: 0;
 }
+
+#header {
+	height: 84px;
+	background: #dcdcdc url(/images/header-bg.png) repeat-x left top;
+	border-bottom: 1px solid #fb690c;
+}
+
+#logo {
+	display: block;
+	width: 450px;
+	height: 75px;
+	margin-left: 15px;
+	background: transparent url(/images/header.png) no-repeat left top;
+}
+#logo span {
+	display: none;
+}
+
